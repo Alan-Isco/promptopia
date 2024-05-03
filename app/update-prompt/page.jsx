@@ -17,8 +17,8 @@ const EditPrompt = () => {
 
   useEffect(() => {
     const getPromptDetails = async () => {
-      const res = await fetch(`/api/prompt/${promptId}`);
-      const data = await res.json();
+      const response = await fetch(`/api/prompt/${promptId}`);
+      const data = await response.json();
 
       setPost({
         prompt: data.prompt,
@@ -29,7 +29,7 @@ const EditPrompt = () => {
     if (promptId) getPromptDetails();
   }, [promptId]);
 
-  const editPrompt = async (e) => {
+  const updatePrompt = async (e) => {
     e.preventDefault();
     setSubmitting(true);
 
@@ -59,7 +59,7 @@ const EditPrompt = () => {
       post={post}
       setPost={setPost}
       submitting={submitting}
-      handleSubmit={editPrompt}
+      handleSubmit={updatePrompt}
     />
   );
 };
